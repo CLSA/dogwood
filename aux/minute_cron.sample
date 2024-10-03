@@ -1,0 +1,36 @@
+#!/usr/bin/php
+<?php
+/**
+ * Utility script which should be ran once every few minutes.
+ * Author: Patrick Emond <emondpd@mcmaster.ca>
+ */
+
+/**
+ * Make sure to fill in the following
+ */
+
+define( 'URL', 'https://localhost/<PATH-TO-DOGWOOD>/api/' );
+
+/**
+ * Do not edit any of the following lines
+ */
+
+if( '/aux' == substr( getcwd(), -4 ) ) chdir( '..' );
+require_once 'settings.ini.php';
+require_once 'settings.local.ini.php';
+require_once $SETTINGS['path']['CENOZO'].'/src/initial.class.php';
+$initial = new \cenozo\initial( true );
+$settings = $initial->get_settings();
+define( 'USER', $settings['utility']['username'] );
+define( 'AUTH', sprintf( 'Authorization: Basic %s', base64_encode(
+  sprintf( '%s:%s', $settings['utility']['username'], $settings['utility']['password'] ) ) ) );
+
+// function for writing to the log
+function write_log( $message )
+{
+  file_put_contents(
+    LOG_FILE_PATH,
+    sprintf( "%s  [cron] <%s> %s\n\n", date( 'Y-m-d (D) H:i:s' ), USER, $message ),
+    FILE_APPEND
+  );
+}
