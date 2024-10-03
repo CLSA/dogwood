@@ -4,7 +4,7 @@ CREATE PROCEDURE patch_access()
   BEGIN
 
     -- determine the cenozo database name (can't use fk_access_site_id since we'll be creating it)
-    SELECT REPLACE( DATABASE(), "_dogwood", "_cenozo" ) INTO @cenozo;
+    SELECT REPLACE( DATABASE(), "dogwood", "cenozo" ) INTO @cenozo;
 
     SELECT "Creating new access table" AS ""; 
 

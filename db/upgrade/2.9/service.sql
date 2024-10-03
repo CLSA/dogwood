@@ -19,4 +19,6 @@ INSERT IGNORE INTO service ( subject, method, resource, restricted ) VALUES
 ( 'account', 'GET', 0, 1 ),
 ( 'account', 'GET', 1, 1 ),
 ( 'account', 'PATCH', 1, 1 ),
-( 'account', 'POST', 0, 1 );
+( 'account', 'POST', 0, 1 ),
+( 'organization', 'GET', 0, 1 ),
+( 'organization', 'GET', 1, 1 );

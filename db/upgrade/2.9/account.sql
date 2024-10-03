@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS account (
   create_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   organization_id INT(10) UNSIGNED NOT NULL,
   username VARCHAR(45) NOT NULL,
-  password VARCHAR(45) NOT NULL,
+  password VARCHAR(255) NOT NULL,
   password_type ENUM('whirlpool', 'bcrypt') NULL DEFAULT NULL,
   email VARCHAR(255) NOT NULL,
   PRIMARY KEY (id),
