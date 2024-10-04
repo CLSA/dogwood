@@ -5,8 +5,8 @@ CREATE TABLE IF NOT EXISTS server (
   update_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP(),
   create_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(),
   name VARCHAR(45) NOT NULL,
-  identifier VARCHAR(255) NOT NULL,
+  address VARCHAR(255) NOT NULL
   PRIMARY KEY (id),
   UNIQUE INDEX uq_name (name ASC),
-  UNIQUE INDEX uq_identifier (identifier ASC))
+  UNIQUE INDEX uq_address (address ASC))
 ENGINE = InnoDB;
