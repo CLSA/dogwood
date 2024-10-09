@@ -2,7 +2,6 @@
 
 SET AUTOCOMMIT=0;
 
-SOURCE access.sql
 SOURCE custom_report.sql
 SOURCE role_has_custom_report.sql
 SOURCE setting.sql
