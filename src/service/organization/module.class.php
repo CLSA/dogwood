@@ -32,7 +32,7 @@ class module extends \cenozo\service\module
         // restrict by user
         $user_mod = lib::create( 'database\modifier' );
         $user_mod->where( 'user.id', '=', $db_user->id );
-        if( 0 == $db_organization->count_user( $user_mod ) ) $this->get_status()->set_code( 404 );
+        if( 0 == $db_organization->get_user_count( $user_mod ) ) $this->get_status()->set_code( 404 );
       }
     }
   }
