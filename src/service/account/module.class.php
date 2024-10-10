@@ -27,26 +27,12 @@ class module extends \cenozo\service\module
 
       if( !is_null( $db_organization ) )
       {
-        // restrict by server
-        $allow = false;
-        $address =
-          array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ) ?
-          $_SERVER['HTTP_X_FORWARDED_FOR'] :
-          'localhost';
+        $db_user = lib::create( 'business\session' )->get_user();
 
-        $select = lib::create( 'database\select' );
-        $select->add_table_column( 'server', 'address' );
-        $server_list = $db_organization->get_server_list( $select );
-        foreach( $server_list as $server )
-        {
-          if( $address == $server['address'] )
-          {
-            $allow = true;
-            break;
-          }
-        }
-
-        if( !$allow ) $this->get_status()->set_code( 404 );
+        // restrict by user
+        $user_mod = lib:;create( 'database\modifier' );
+        $user_mod->where( 'user.id', '=', $db_user->id );
+        if( 0 == $db_organization->count_user( $user_mod ) ) $this->get_status()->set_code( 404 );
       }
     }
   }
@@ -58,14 +44,10 @@ class module extends \cenozo\service\module
   {
     parent::prepare_read( $select, $modifier );
 
-    // restrict by server
-    $address =
-      array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ) ?
-      $_SERVER['HTTP_X_FORWARDED_FOR'] :
-      'localhost';
+    // restrict by user
+    $db_user = lib::create( 'business\session' )->get_user();
     $modifier->join( 'organization', 'account.organization_id', 'organization.id' );
-    $modifier->join( 'server_has_organization', 'organization.id', 'server_has_organization.organization_id' );
-    $modifier->join( 'server', 'server_has_organization.server_id', 'server.id' );
-    $modifier->where( 'server.address', '=', $address );
+    $modifier->join( 'user_has_organization', 'organization.id', 'user_has_organization.organization_id' );
+    $modifier->where( 'user_has_organization.user_id', '=', $db_user->id );
   }
 }

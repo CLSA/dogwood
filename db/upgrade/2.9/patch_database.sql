@@ -7,9 +7,8 @@ SOURCE role_has_custom_report.sql
 SOURCE setting.sql
 SOURCE writelog.sql
 
-SOURCE server.sql
 SOURCE organization.sql
-SOURCE server_has_organization.sql
+SOURCE user_has_organization.sql
 SOURCE account.sql
 
 SOURCE service.sql
