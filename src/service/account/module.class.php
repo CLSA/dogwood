@@ -23,11 +23,12 @@ class module extends \cenozo\service\module
 
     if( $this->service->may_continue() )
     {
-      $db_organization = $this->get_resource()->get_organization();
+      $db_account = $this->get_resource();
 
-      if( !is_null( $db_organization ) )
+      if( !is_null( $db_account ) )
       {
         $db_user = lib::create( 'business\session' )->get_user();
+        $db_organization = $db_account->get_organization();
 
         // restrict by user
         $user_mod = lib::create( 'database\modifier' );
