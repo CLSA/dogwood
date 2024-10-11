@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS account (
   username VARCHAR(45) NOT NULL,
   password VARCHAR(255) NOT NULL,
   password_type ENUM('whirlpool', 'bcrypt') NULL DEFAULT NULL,
-  email VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (id),
   INDEX fk_organization_id (organization_id ASC),
   UNIQUE INDEX uq_organization_id_name (organization_id ASC, username ASC),
