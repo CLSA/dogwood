@@ -11,7 +11,6 @@
  */
 define( 'ARGUMENT_DOGWOOD_BASE_ERRNO',   140000 );
 define( 'DATABASE_DOGWOOD_BASE_ERRNO',   240000 );
-define( 'LDAP_DOGWOOD_BASE_ERRNO',       340000 );
 define( 'NOTICE_DOGWOOD_BASE_ERRNO',     440000 );
 define( 'PERMISSION_DOGWOOD_BASE_ERRNO', 540000 );
 define( 'RUNTIME_DOGWOOD_BASE_ERRNO',    640000 );
@@ -25,12 +24,6 @@ define( 'SYSTEM_DOGWOOD_BASE_ERRNO',     740000 );
  * "database" error codes
  * 
  * Since database errors already have codes this list is likely to stay empty.
- */
-
-/**
- * "ldap" error codes
- * 
- * Since ldap errors already have codes this list is likely to stay empty.
  */
 
 /**
