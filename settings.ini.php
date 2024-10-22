@@ -12,7 +12,7 @@ global $SETTINGS;
 // tagged version
 $SETTINGS['general']['application_name'] = 'dogwood';
 $SETTINGS['general']['instance_name'] = $SETTINGS['general']['application_name'];
-$SETTINGS['general']['version'] = '2.9';
+$SETTINGS['general']['version'] = '2.10';
 $SETTINGS['general']['build'] = 'bf9f112';
 
 // the location of dogwood internal path
